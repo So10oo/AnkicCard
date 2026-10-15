@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #faf8f6;
+  --fg: #1a1a1a;
+  --muted: #6b6560;
+  --card: #ffffff;
+  --border: #e8e2db;
+  --accent: #e07a5f;
+  --accent-soft: #d4a373;
+  --danger: #c45c5c;
+  --success: #6a9b7a;
+  --again: #c45c5c;
+  --hard: #d4a373;
+  --good: #6a9b7a;
+  --easy: #5b8fa8;
+}
+
+.dark {
+  --bg: #1a1a1a;
+  --fg: #f2efe9;
+  --muted: #a39e96;
+  --card: #242424;
+  --border: #33302c;
+  --accent: #e07a5f;
+  --accent-soft: #d4a373;
+  --danger: #e07a7a;
+  --success: #7fb892;
+  --again: #e07a7a;
+  --hard: #d4a373;
+  --good: #7fb892;
+  --easy: #7aa9c2;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100%;
+  min-height: 100dvh;
+}
+
+body {
+  font-family: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+.font-han {
+  font-family: "Noto Serif SC", "Source Han Serif SC", serif;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-touch min-w-touch items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition active:scale-[0.98] disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-[var(--accent)] text-white;
+  }
+
+  .btn-secondary {
+    @apply btn border border-[var(--border)] bg-[var(--card)] text-[var(--fg)];
+  }
+
+  .btn-ghost {
+    @apply btn text-[var(--muted)];
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-[var(--border)] bg-[var(--card)] px-3 py-3 text-base outline-none focus:border-[var(--accent)];
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-[var(--border)] bg-[var(--card)];
+  }
+}
+
+/* 3D flip */
+.flip-scene {
+  perspective: 1200px;
+}
+
+.flip-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.flip-card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+}
